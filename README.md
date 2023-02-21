@@ -1,5 +1,5 @@
 # Clone the repository
-```git clone https://usajobs-cors-proxy.westus3.cloudapp.azure.com```<br>
+```git clone https://github.com/StuartMolnar/usajobs-cors-proxy-server.git```<br>
 then<br>
 ```cd usajobs-cors-proxy-server```
 
