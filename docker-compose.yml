@@ -4,3 +4,4 @@ services:
     image: proxy
     ports:
       - "8080:8080"
+    network_mode: "host"

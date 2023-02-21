@@ -1,5 +1,6 @@
 import requests
 import connexion
+import ssl
 
 app = connexion.App(__name__, specification_dir='.')
 
@@ -33,4 +34,4 @@ def proxy(path):
     return response.text, response.status_code, headers
 
 if __name__ == '__main__':
-    app.run(host='usajobs-cors-proxy.westus3.cloudapp.azure.com', port=8080)
+    app.run(host='localhost', port=8080)
