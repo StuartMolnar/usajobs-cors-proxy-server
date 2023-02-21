@@ -1,5 +1,6 @@
 # Clone the repository
 ```git clone https://usajobs-cors-proxy.westus3.cloudapp.azure.com```
+then
 ```cd usajobs-cors-proxy-server```
 
 # Make the setup script executable
