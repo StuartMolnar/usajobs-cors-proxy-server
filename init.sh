@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# Clone the repository
-git clone https://usajobs-cors-proxy.westus3.cloudapp.azure.com
-cd usajobs-cors-proxy-server
-
 # Update and install Python 3.7 and pip
 sudo apt-get update -y
 sudo apt-get install -y python3.7

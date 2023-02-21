@@ -1,5 +1,12 @@
-run ```chmod +x init.sh```
+# Clone the repository
+```git clone https://usajobs-cors-proxy.westus3.cloudapp.azure.com```
+```cd usajobs-cors-proxy-server```
 
-then ```./init.sh```
+# Make the setup script executable
+```chmod +x init.sh```
 
-then ```sudo python3 app.py```
+# Execute the setup script
+```./init.sh```
+
+# Run the Python script
+```sudo python3 app.py```
