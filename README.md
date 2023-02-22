@@ -38,4 +38,4 @@ WantedBy=multi-user.target
 ```sudo systemctl start proxy.service```
 
 # Check status of service
-```sudo systemctl status proxy.service
+```sudo systemctl status proxy.service```
