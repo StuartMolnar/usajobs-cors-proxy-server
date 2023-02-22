@@ -3,10 +3,11 @@ import connexion
 import ssl
 import yaml
 
+app = connexion.App(__name__, specification_dir='.')
+
+# Load variables from the configuration file
 with open('app_conf.yml', 'r') as f:
     app_config = yaml.safe_load(f.read())
-
-app = connexion.App(__name__, specification_dir='.')
 
 # Define the CORS proxy endpoint
 @app.route('/proxy/<path:path>', methods=['GET'])
@@ -36,7 +37,10 @@ def proxy(path):
 if __name__ == '__main__':
     # Load the SSL certificate and key files
     ssl_context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
-    ssl_context.load_cert_chain(f'/etc/letsencrypt/live/{app_config["hostname"]}/fullchain.pem', f'/etc/letsencrypt/live/{app_config["hostname"]}/privkey.pem')
+    ssl_context.load_cert_chain(
+        f'/etc/letsencrypt/live/{app_config["hostname"]}/fullchain.pem', 
+        f'/etc/letsencrypt/live/{app_config["hostname"]}/privkey.pem'
+    )
 
     # Run the app with the SSL context
     app.run(host='0.0.0.0', port=443, ssl_context=ssl_context)
