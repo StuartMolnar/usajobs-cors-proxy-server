@@ -5,6 +5,21 @@ then
 <br><br>
 ```cd usajobs-cors-proxy-server```
 
+# Adjust the DNS address
+```nano app_config.yml```
+
+<br>
+
+then change
+
+<br>
+
+```hostname: usajobs-cors-proxy.westus3.cloudapp.azure.com```
+
+<br>
+
+to the DNS address of your machine
+
 # Make the setup script executable
 ```chmod +x init.sh```
 
