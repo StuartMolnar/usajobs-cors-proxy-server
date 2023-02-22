@@ -11,7 +11,7 @@ then<br>
 
 # Create the proxy service
 ```sudo nano /etc/systemd/system/proxy.service```
-<br>then enter<br>
+<br><br>then enter<br>
 
 ``` proxy.service
 [Unit]
