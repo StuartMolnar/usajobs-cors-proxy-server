@@ -1,6 +1,6 @@
 # Clone the repository
-```git clone https://github.com/StuartMolnar/usajobs-cors-proxy-server.git```<br>
-then<br>
+```git clone https://github.com/StuartMolnar/usajobs-cors-proxy-server.git```<br><br>
+then<br><br>
 ```cd usajobs-cors-proxy-server```
 
 # Make the setup script executable
