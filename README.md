@@ -9,7 +9,7 @@ then
 ```nano app_config.yml```
 <br><br>
 then change
-<br><br>
+<br>
 
 ```hostname: usajobs-cors-proxy.westus3.cloudapp.azure.com```
 <br><br>
