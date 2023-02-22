@@ -1,6 +1,8 @@
 # Clone the repository
-```git clone https://github.com/StuartMolnar/usajobs-cors-proxy-server.git```<br><br>
-then<br><br>
+```git clone https://github.com/StuartMolnar/usajobs-cors-proxy-server.git```
+<br><br>
+then
+<br><br>
 ```cd usajobs-cors-proxy-server```
 
 # Make the setup script executable
@@ -11,7 +13,9 @@ then<br><br>
 
 # Create the proxy service
 ```sudo nano /etc/systemd/system/proxy.service```
-<br><br>then enter<br>
+<br><br>
+then enter
+<br>
 
 ``` proxy.service
 [Unit]
@@ -39,3 +43,26 @@ WantedBy=multi-user.target
 
 # Check status of service
 ```sudo systemctl status proxy.service```
+<br><br>
+this should return:
+<br><br>
+``` proxy service output
+● proxy.service - Proxy Server Service
+   Loaded: loaded (/etc/systemd/system/proxy.service; disabled; vendor preset: enabled)
+   Active: active (running) since Wed 2023-02-22 08:33:22 UTC; 4min 35s ago
+ Main PID: 21462 (sudo)
+    Tasks: 2 (limit: 446)
+   CGroup: /system.slice/proxy.service
+           ├─21462 sudo /usr/bin/python3 /home/azureuser/usajobs-cors-proxy-server/app.py
+           └─21473 /usr/bin/python3 /home/azureuser/usajobs-cors-proxy-server/app.py
+
+Feb 22 08:33:22 cors-proxy-service sudo[21462]: pam_unix(sudo:session): session opened for user root by (uid=0)
+Feb 22 08:33:22 cors-proxy-service bash[21462]:  * Serving Flask app 'app' (lazy loading)
+Feb 22 08:33:22 cors-proxy-service bash[21462]:  * Environment: production
+Feb 22 08:33:22 cors-proxy-service bash[21462]:    WARNING: This is a development server. Do not use it in a production deployment.
+Feb 22 08:33:22 cors-proxy-service bash[21462]:    Use a production WSGI server instead.
+Feb 22 08:33:22 cors-proxy-service bash[21462]:  * Debug mode: off
+Feb 22 08:33:22 cors-proxy-service bash[21462]:  * Running on all addresses.
+Feb 22 08:33:22 cors-proxy-service bash[21462]:    WARNING: This is a development server. Do not use it in a production deployment.
+Feb 22 08:33:22 cors-proxy-service bash[21462]:  * Running on https://10.1.0.4:443/ (Press CTRL+C to quit)
+```
