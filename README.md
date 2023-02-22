@@ -9,5 +9,32 @@ then<br>
 # Execute the setup script
 ```./init.sh```
 
-# Run the Python script
-```sudo python3 app.py```
+# Create the proxy service
+```sudo nano /etc/systemd/system/proxy.service```
+<br>then enter<br>
+<code>
+[Unit]
+Description=Proxy Server Service
+After=network.target
+
+[Service]
+User=azureuser
+WorkingDirectory=/home/azureuser/usajobs-cors-proxy-server
+ExecStart=/bin/bash -c "sudo /usr/bin/python3 /home/azureuser/usajobs-cors-proxy-server/app.py"
+Restart=always
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target
+<code>
+
+# Reload services
+```sudo systemctl daemon-reload```
+
+# Start the service
+```sudo systemctl start proxy.service```
+
+# Check status of service
+```sudo systemctl status proxy.service
