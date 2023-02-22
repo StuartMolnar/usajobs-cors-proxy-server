@@ -12,7 +12,8 @@ then<br>
 # Create the proxy service
 ```sudo nano /etc/systemd/system/proxy.service```
 <br>then enter<br>
-<code>
+
+``` proxy.service
 [Unit]
 Description=Proxy Server Service
 After=network.target
@@ -28,7 +29,7 @@ StandardError=syslog
 
 [Install]
 WantedBy=multi-user.target
-<code>
+```
 
 # Reload services
 ```sudo systemctl daemon-reload```
