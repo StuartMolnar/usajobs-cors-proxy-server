@@ -7,17 +7,12 @@ then
 
 # Adjust the DNS address
 ```nano app_config.yml```
-
-<br>
-
+<br><br>
 then change
-
-<br>
+<br><br>
 
 ```hostname: usajobs-cors-proxy.westus3.cloudapp.azure.com```
-
-<br>
-
+<br><br>
 to the DNS address of your machine
 
 # Make the setup script executable
