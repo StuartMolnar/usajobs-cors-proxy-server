@@ -4,6 +4,7 @@ FROM ubuntu:18.04
 # Install Python 3.9 and other necessary packages
 RUN apt-get update && \
     apt-get install -y python3.7 python3-pip && \
+    apt-get install -y systemd && \
     rm -rf /var/lib/apt/lists/*
 
 # Set the working directory in the container
@@ -24,10 +25,10 @@ RUN pip3 install -r requirements.txt
 # Expose the port that the app will run on
 EXPOSE 8443
 
-# Enable the Gunicorn service
-COPY gunicorn.service /etc/systemd/system/gunicorn.service
+# Enable the proxy service
+COPY proxy.service /etc/systemd/system/proxy.service
 
-RUN systemctl enable gunicorn.service
+RUN systemctl enable proxy.service
 
 # Start systemd as the container's entrypoint
 CMD ["/sbin/init"]
