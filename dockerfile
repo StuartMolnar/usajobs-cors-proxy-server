@@ -3,7 +3,7 @@ FROM ubuntu:18.04
 
 # Install Python 3.9 and other necessary packages
 RUN apt-get update && \
-    apt-get install -y python3.9 python3-pip && \
+    apt-get install -y python3.7 python3-pip && \
     rm -rf /var/lib/apt/lists/*
 
 # Set the working directory in the container
