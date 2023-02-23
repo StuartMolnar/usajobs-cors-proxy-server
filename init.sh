@@ -46,4 +46,5 @@ sudo certbot certonly --non-interactive --agree-tos --standalone -d "$hostname" 
 # Move the Systemd service unit file and start the service
 sudo mv proxy.service /etc/systemd/system
 sudo systemctl daemon-reload
-sudo systemctl start proxy
+sudo systemctl start proxy.service
+sudo systemctl enable proxy.service

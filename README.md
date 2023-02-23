@@ -2,7 +2,7 @@
 
 Create an <bold>Ubuntu 18.04</bold> machine and assign it a <bold>DNS address</bold>.
 <br><br>
-Expose <bold>port 8443</bold> on your machine.
+Expose <bold>port 8443</bold> and <bold>port 80</bold> on your machine.
 
 # Clone the repository
 ```git clone https://github.com/StuartMolnar/usajobs-cors-proxy-server.git```
