@@ -43,4 +43,4 @@ if __name__ == '__main__':
     )
 
     # Run the app with the SSL context
-    app.run(host='0.0.0.0', port=443, ssl_context=ssl_context)
+    app.run(host='0.0.0.0', port=8443, ssl_context=ssl_context)
