@@ -18,6 +18,9 @@ sudo apt install docker-ce -y
 sudo usermod -aG docker azureuser
 newgrp docker
 
+# Build the Docker image
+docker build -t proxy:latest .
+
 # Install Certbot
 sudo snap install core
 sudo snap refresh core
@@ -26,9 +29,6 @@ sudo ln -s /snap/bin/certbot /usr/bin/certbot
 
 # Request SSL/TLS certificate using Certbot
 sudo certbot certonly --standalone -d "$hostname"
-
-# Build the Docker image
-docker build -t proxy:latest .
 
 # Move the Systemd service unit file and start the service
 sudo mv proxy.service /etc/systemd/system
