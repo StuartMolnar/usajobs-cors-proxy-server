@@ -5,7 +5,8 @@ Description=Gunicorn Server
 User=root
 Group=root
 WorkingDirectory=/app
-ExecStart=/usr/local/bin/gunicorn -b 0.0.0.0:8443 --certfile=/etc/letsencrypt/live/$(grep hostname app_conf.yml | cut -d ':' -f 2 | xargs)/fullchain.pem --keyfile=/etc/letsencrypt/live/$(grep hostname app_conf.yml | cut -d ':' -f 2 | xargs)/privkey.pem --timeout 300 app:app
+Environment=APP_HOSTNAME=$(grep hostname app_conf.yml | cut -d ':' -f 2 | xargs)
+ExecStart=/usr/local/bin/gunicorn -b 0.0.0.0:8443 --certfile=/etc/letsencrypt/live/$APP_HOSTNAME/fullchain.pem --keyfile=/etc/letsencrypt/live/$APP_HOSTNAME/privkey.pem --timeout 300 app:app
 Restart=always
 RestartSec=3
 
