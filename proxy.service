@@ -1,0 +1,14 @@
+[Unit]
+Description=Gunicorn service for proxy
+After=docker.service
+Requires=docker.service
+
+[Service]
+Restart=always
+ExecStartPre=-/usr/bin/docker stop proxy
+ExecStartPre=-/usr/bin/docker rm proxy
+ExecStart=/usr/bin/docker run -d -p 8443:8443 -v /etc/letsencrypt:/etc/letsencrypt proxy:latest
+ExecStop=/usr/bin/docker stop proxy
+
+[Install]
+WantedBy=multi-user.target
