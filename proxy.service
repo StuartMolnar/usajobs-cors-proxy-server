@@ -1,14 +1,13 @@
 [Unit]
-Description=Gunicorn service for proxy
-After=docker.service
-Requires=docker.service
+Description=Gunicorn Server
 
 [Service]
+User=root
+Group=root
+WorkingDirectory=/app
+ExecStart=/usr/local/bin/gunicorn -b 0.0.0.0:8443 --certfile=/etc/letsencrypt/live/$(grep hostname app_conf.yml | cut -d ':' -f 2 | xargs)/fullchain.pem --keyfile=/etc/letsencrypt/live/$(grep hostname app_conf.yml | cut -d ':' -f 2 | xargs)/privkey.pem --timeout 300 app:app
 Restart=always
-ExecStartPre=-/usr/bin/docker stop proxy
-ExecStartPre=-/usr/bin/docker rm proxy
-ExecStart=/usr/bin/docker run -d --name proxy -p 8443:8443 -v /etc/letsencrypt:/etc/letsencrypt proxy:latest
-ExecStop=/usr/bin/docker stop proxy
+RestartSec=3
 
 [Install]
 WantedBy=multi-user.target
