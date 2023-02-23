@@ -7,7 +7,7 @@ Requires=docker.service
 Restart=always
 ExecStartPre=-/usr/bin/docker stop proxy
 ExecStartPre=-/usr/bin/docker rm proxy
-ExecStart=/usr/bin/docker run -d --name proxy -p 8443:8443 -v /etc/letsencrypt:/etc/letsencrypt proxy:latest
+ExecStart=sudo /usr/bin/docker run -d --name proxy -p 8443:8443 -v /etc/letsencrypt:/etc/letsencrypt proxy:latest
 ExecStop=/usr/bin/docker stop proxy
 
 [Install]

@@ -14,12 +14,8 @@ sudo apt-get update
 sudo apt-cache policy docker-ce
 sudo apt install docker-ce -y
 
-# Add current user to the "docker" group
-sudo usermod -aG docker azureuser
-newgrp docker
-
 # Build the Docker image
-docker build -t proxy:latest .
+sudo docker build -t proxy:latest .
 
 # Install Certbot
 sudo snap install core
