@@ -43,8 +43,5 @@ sudo ln -s /snap/bin/certbot /usr/bin/certbot
 # Request SSL/TLS certificate using Certbot
 sudo certbot certonly --non-interactive --agree-tos --standalone -d "$hostname" --email "$email"
 
-# Move the Systemd service unit file and start the service
-sudo mv proxy.service /etc/systemd/system
-sudo systemctl daemon-reload
-sudo systemctl start proxy.service
-sudo systemctl enable proxy.service
+# Start the docker container on port 8443, and pass in SSL/TLS certification
+sudo docker run -d --name proxy -p 8443:8443 -v /etc/letsencrypt:/etc/letsencrypt proxy:latest
