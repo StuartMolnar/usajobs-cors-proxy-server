@@ -10,14 +10,11 @@ RUN apt-get update && \
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy the app.py file into the container
+# Copy the required files into the container
 COPY app.py .
-
-# Copy the configuration file into the container
 COPY app_conf.yml .
-
-# Copy the requirements file into the container
 COPY requirements.txt .
+COPY proxy.service /etc/systemd/system/proxy.service
 
 # Install any necessary dependencies
 RUN pip3 install -r requirements.txt
@@ -26,8 +23,6 @@ RUN pip3 install -r requirements.txt
 EXPOSE 8443
 
 # Enable the proxy service
-COPY proxy.service /etc/systemd/system/proxy.service
-
 RUN systemctl enable proxy.service
 
 # Start systemd as the container's entrypoint

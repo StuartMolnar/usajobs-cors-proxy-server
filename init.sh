@@ -44,4 +44,4 @@ sudo ln -s /snap/bin/certbot /usr/bin/certbot
 sudo certbot certonly --non-interactive --agree-tos --standalone -d "$hostname" --email "$email"
 
 # Start the docker container on port 8443, and pass in SSL/TLS certification
-sudo docker run -d --name proxy -p 8443:8443 -v /etc/letsencrypt:/etc/letsencrypt proxy:latest
+sudo docker run -d --privileged --name proxy -p 8443:8443 -v /etc/letsencrypt:/etc/letsencrypt proxy:latest
