@@ -1,2 +1,3 @@
 version: 1
 hostname: usajobs-cors-proxy.westus3.cloudapp.azure.com
+email: example@example.com
