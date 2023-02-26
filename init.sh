@@ -5,8 +5,8 @@ hostname=$(grep -oP 'hostname:\s*\K\S+' app_conf.yml)
 email=$(grep -oP 'email:\s*\K\S+' app_conf.yml)
 
 # Prompt the user for the new values
-read -p "Enter the new hostname (current: $hostname): " new_hostname
-read -p "Enter the new email (current: $email): " new_email
+read -p "Enter the new hostname: " new_hostname
+read -p "Enter the new email: " new_email
 
 # Replace the values in the app_conf.yml file
 sed -i "s/hostname:\s*$hostname/hostname: $new_hostname/" app_conf.yml
@@ -31,8 +31,9 @@ sudo apt-get update
 sudo apt-cache policy docker-ce
 sudo apt install docker-ce -y
 
-# Build the Docker image
-sudo docker build -t proxy:latest .
+# Build the Docker image with Hostname as an environment variable
+sudo docker build --build-arg HOSTNAME=$hostname-t proxy:latest .
+
 
 # Install Certbot
 sudo snap install core

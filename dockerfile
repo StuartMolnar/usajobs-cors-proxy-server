@@ -1,6 +1,9 @@
 # Start from a base image with Ubuntu 18.04
 FROM ubuntu:18.04
 
+ARG HOSTNAME
+ENV HOSTNAME=$HOSTNAME
+
 # Install Python 3.9 and other necessary packages
 RUN apt-get update && \
     apt-get install -y python3.7 python3-pip && \
