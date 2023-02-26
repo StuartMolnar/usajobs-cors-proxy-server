@@ -9,12 +9,13 @@ Expose <bold>port 8443</bold> and <bold>port 80</bold> on your machine.
 
 # Adjust the DNS address
 Set the DNS address inside: ```nano app_config.yml```
-<br><br>
-then change
+
 <br>
 
-```hostname: <Your DNS Address>```
-<br><br>
+then change: ```hostname: <Your DNS Address>```
+
+<br>
+
 to the DNS address of your machine
 
 # Make the setup script executable and run it
