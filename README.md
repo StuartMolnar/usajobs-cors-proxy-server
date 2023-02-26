@@ -12,21 +12,17 @@ then
 ```cd usajobs-cors-proxy-server```
 
 # Adjust the DNS address
-```nano app_config.yml```
+Set the DNS address inside: ```nano app_config.yml```
 <br><br>
 then change
 <br>
 
-```hostname: usajobs-cors-proxy.westus3.cloudapp.azure.com```
+```hostname: <Your DNS Address>```
 <br><br>
 to the DNS address of your machine
 
 # Make the setup script executable and run it
-```chmod +x init.sh```
-<br><br>
-then
-<br><br>
-```./init.sh```
+```chmod +x init.sh``` -> ```./init.sh```
 
 # That's all
 The endpoint should be available at 
