@@ -1,8 +1,10 @@
 # Create the environment
 
-Create an <bold>Ubuntu 18.04</bold> machine and assign it a <bold>DNS address</bold>.
-<br><br>
-Expose <bold>port 8443</bold> and <bold>port 80</bold> on your machine.
+Create an **Ubuntu 18.04** machine and assign it a **DNS address**.
+
+<br>
+
+Expose **port 8443** and **port 80** on your machine.
 
 # Clone the repository
 ```git clone https://github.com/StuartMolnar/usajobs-cors-proxy-server.git``` -> ```cd usajobs-cors-proxy-server```
@@ -12,11 +14,7 @@ Set the DNS address inside: ```nano app_config.yml```
 
 <br>
 
-then change: ```hostname: <Your DNS Address>```
-
-<br>
-
-to the DNS address of your machine
+then change ```hostname: <Your DNS Address>``` to the DNS address of your machine
 
 # Make the setup script executable and run it
 ```chmod +x init.sh``` -> ```./init.sh```
