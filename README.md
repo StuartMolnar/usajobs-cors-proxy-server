@@ -7,7 +7,9 @@ Create an **Ubuntu 18.04** machine and assign it a **DNS address**.
 Expose **port 8443** and **port 80** on your machine.
 
 # Clone the repository
-```git clone https://github.com/StuartMolnar/usajobs-cors-proxy-server.git``` -> ```cd usajobs-cors-proxy-server```
+```git clone https://github.com/StuartMolnar/usajobs-cors-proxy-server.git```
+and
+```cd usajobs-cors-proxy-server```
 
 # Make the setup script executable and run it
 ```chmod +x init.sh``` -> ```./init.sh```
