@@ -8,7 +8,9 @@ Expose **port 8443** and **port 80** on your machine.
 
 # Clone the repository
 ```git clone https://github.com/StuartMolnar/usajobs-cors-proxy-server.git```
+
 and
+
 ```cd usajobs-cors-proxy-server```
 
 # Make the setup script executable and run it
