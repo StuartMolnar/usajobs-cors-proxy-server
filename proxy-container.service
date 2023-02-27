@@ -1,0 +1,11 @@
+[Unit]
+Description=Docker container for USAJobs CORS proxy server
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker run -d --privileged --name proxy -p 8443:8443 -v /etc/letsencrypt:/etc/letsencrypt proxy:latest
+
+[Install]
+WantedBy=multi-user.target
