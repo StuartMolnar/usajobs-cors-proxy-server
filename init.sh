@@ -46,3 +46,10 @@ sudo certbot certonly --non-interactive --agree-tos --standalone -d "$hostname" 
 
 # Start the docker container on port 8443, and pass in SSL/TLS certification
 sudo docker run -d --privileged --name proxy -p 8443:8443 -v /etc/letsencrypt:/etc/letsencrypt proxy:latest
+
+
+# Create the proxy-container service which will start the docker container on boot
+sudo mv proxy-container.service /etc/systemd/system
+sudo systemctl daemon-reload
+sudo systemctl enable proxy-container.service
+sudo systemctl start proxy-container.service
