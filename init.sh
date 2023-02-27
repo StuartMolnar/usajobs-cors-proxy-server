@@ -55,15 +55,15 @@ sudo docker run -d --privileged --name proxy -p 8443:8443 -v /etc/letsencrypt:/e
 sudo docker stop proxy
 
 # Remove the proxy-container service if it exists
-sudo systemctl stop proxy-container.service
-sudo systemctl disable proxy-container.service
+sudo systemctl stop proxy-startup.service
+sudo systemctl disable proxy-startup.service
 sudo systemctl daemon-reload
-sudo rm /etc/systemd/system/proxy-container.service
-sudo rm /run/systemd/system/proxy-container.service.*
+sudo rm /etc/systemd/system/proxy-startup.service
+sudo rm /run/systemd/system/proxy-startup.service.*
 sudo systemctl daemon-reload
 
 # Create the proxy-container service which will start the docker container on boot
-sudo mv proxy-container.service /etc/systemd/system
+sudo mv proxy-startup.service /etc/systemd/system
 sudo systemctl daemon-reload
-sudo systemctl enable proxy-container.service
-sudo systemctl start proxy-container.service
+sudo systemctl enable proxy-startup.service
+sudo systemctl start proxy-startup.service
