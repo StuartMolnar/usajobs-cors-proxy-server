@@ -30,9 +30,14 @@ def proxy(path):
     # Make the request to the destination server
     response = requests.request(method, url, data=data, headers=headers)
 
+    # Set the content type header to application/json
+    headers['Content-Type'] = 'application/json'
+
     # Return the response from the destination server to the client
     print('debug status: request completed')
     return response.text, response.status_code, headers
+
+
 
 if __name__ == '__main__':
     # Load the SSL certificate and key files
