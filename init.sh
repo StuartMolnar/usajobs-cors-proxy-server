@@ -46,9 +46,9 @@ sudo docker rm proxy
 sudo docker rmi proxy:latest
 
 # Build the Docker image with Hostname as an environment variable
-sudo docker build --build-arg HOSTNAME=$hostname -t proxy:latest .
+#sudo docker build --build-arg HOSTNAME=$hostname -t proxy:latest .
 
-sudo docker build --build-arg HOSTNAME=usajobs-api-proxy.westus3.cloudapp.azure.com --progress=plain -t proxy:latest .
+#sudo docker build --build-arg HOSTNAME=usajobs-api-proxy.westus3.cloudapp.azure.com --progress=plain -t proxy:latest .
 
 sudo docker build --progress=plain -t proxy:latest .
 
