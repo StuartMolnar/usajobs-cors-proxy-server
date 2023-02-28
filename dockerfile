@@ -10,6 +10,7 @@ RUN echo "export HOSTNAME=$HOSTNAME" >> ~/.bashrc
 RUN apt-get update && \
     apt-get install -y python3.7 python3-pip && \
     apt-get install -y systemd && \
+    apt-get install -y jq && \
     rm -rf /var/lib/apt/lists/*
 
 # Set the working directory in the container
