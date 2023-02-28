@@ -45,18 +45,8 @@ sudo docker stop proxy
 sudo docker rm proxy
 sudo docker rmi proxy:latest
 
-# Build the Docker image with Hostname as an environment variable
-#sudo docker build --build-arg HOSTNAME=$hostname -t proxy:latest .
-
-#sudo docker build --build-arg HOSTNAME=usajobs-api-proxy.westus3.cloudapp.azure.com --progress=plain -t proxy:latest .
-
+# Build the Docker image
 sudo docker build --progress=plain -t proxy:latest .
-
-# Start the docker container on port 8443, and pass in SSL/TLS certification
-sudo docker run -d --privileged --name proxy -p 8443:8443 -v /etc/letsencrypt:/etc/letsencrypt proxy:latest
-
-# Stop the docker container to prepare it for the service
-# sudo docker stop proxy
 
 # Remove the proxy-startup service if it exists
 sudo systemctl stop proxy-startup.service
@@ -66,7 +56,7 @@ sudo rm /etc/systemd/system/proxy-startup.service
 sudo rm /run/systemd/system/proxy-startup.service.*
 sudo systemctl daemon-reload
 
-# Create the proxy-container service which will start the docker container on boot
+# Create the proxy-startup service which will start the docker container on boot
 chmod +x proxy-startup-helper.sh
 sudo mv proxy-startup-helper.sh /usr/local/bin
 sudo mv proxy-startup.service /etc/systemd/system
