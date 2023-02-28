@@ -24,14 +24,12 @@ def proxy(path):
     headers = {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET',
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        'Content-Type': 'application/json'
     }
 
     # Make the request to the destination server
     response = requests.request(method, url, data=data, headers=headers)
-
-    # Set the content type header to application/json
-    headers['Content-Type'] = 'application/json'
 
     # Return the response from the destination server to the client
     print('debug status: request completed')
