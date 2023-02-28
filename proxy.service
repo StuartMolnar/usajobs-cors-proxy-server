@@ -5,7 +5,8 @@ Description=Gunicorn Server
 User=root
 Group=root
 WorkingDirectory=/app
-ExecStart=/usr/local/bin/gunicorn -b 0.0.0.0:8443 --certfile=/etc/letsencrypt/live/${HOSTNAME}/fullchain.pem --keyfile=/etc/letsencrypt/live/${HOSTNAME}/privkey.pem --timeout 300 app:app
+ExecStartPre=/bin/bash -c 'echo "HOSTNAME is set to: ${HOSTNAME}" >> /tmp/proxy.log'
+ExecStart=/usr/local/bin/gunicorn -b 0.0.0.0:8443 --certfile="/etc/letsencrypt/live/${HOSTNAME}/fullchain.pem" --keyfile="/etc/letsencrypt/live/${HOSTNAME}/privkey.pem" --timeout 300 app:app
 Restart=always
 RestartSec=3
 
