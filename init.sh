@@ -32,7 +32,7 @@ sudo apt-cache policy docker-ce
 sudo apt install docker-ce -y
 
 # Build the Docker image with Hostname as an environment variable
-sudo docker build --build-arg HOSTNAME=$hostname-t proxy:latest .
+sudo docker build --build-arg HOSTNAME=$hostname-t proxy:1:0 .
 
 
 # Install Certbot
