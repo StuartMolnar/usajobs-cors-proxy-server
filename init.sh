@@ -46,7 +46,7 @@ sudo docker rm proxy
 sudo docker rmi proxy:latest
 
 # Build the Docker image with Hostname as an environment variable
-sudo docker build --build-arg HOSTNAME=$hostname-t -t proxy:latest .
+sudo docker build --build-arg HOSTNAME=$hostname -t proxy:latest .
 
 # Start the docker container on port 8443, and pass in SSL/TLS certification
 sudo docker run -d --privileged --name proxy -p 8443:8443 -v /etc/letsencrypt:/etc/letsencrypt proxy:latest
