@@ -48,10 +48,12 @@ sudo docker rmi proxy:latest
 # Build the Docker image with Hostname as an environment variable
 sudo docker build --build-arg HOSTNAME=$hostname -t proxy:latest .
 
-sudo docker build --build-arg HOSTNAME=usajobs-api-proxy.westus3.cloudapp.azure.com -t proxy:latest .
+sudo docker build --build-arg HOSTNAME=usajobs-api-proxy.westus3.cloudapp.azure.com --progress=plain -t proxy:latest .
+
+sudo docker build --progress=plain -t proxy:latest .
 
 # Start the docker container on port 8443, and pass in SSL/TLS certification
-# sudo docker run -d --privileged --name proxy -p 8443:8443 -v /etc/letsencrypt:/etc/letsencrypt proxy:latest
+sudo docker run -d --privileged --name proxy -p 8443:8443 -v /etc/letsencrypt:/etc/letsencrypt proxy:latest
 
 # Stop the docker container to prepare it for the service
 # sudo docker stop proxy

@@ -21,6 +21,8 @@ COPY app.py .
 COPY app_conf.yml .
 COPY requirements.txt .
 COPY proxy.service /etc/systemd/system/proxy.service
+COPY proxy-helper.sh /usr/local/bin/proxy-helper.sh
+RUN chmod +x /usr/local/bin/proxy-helper.sh
 
 # Install any necessary dependencies
 RUN pip3 install -r requirements.txt
