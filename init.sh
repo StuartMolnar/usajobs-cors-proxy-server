@@ -21,10 +21,12 @@ echo "  hostname: $hostname"
 echo "  email: $email"
 
 # Install necessary packages
+echo "Installing necessary packages..."
 sudo apt-get update -y
 sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
 
 # Install Docker
+echo "Installing Docker..."
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable" -y
 sudo apt-get update
@@ -32,23 +34,28 @@ sudo apt-cache policy docker-ce
 sudo apt install docker-ce -y
 
 # Install Certbot
+echo "Installing Certbot..."
 sudo snap install core
 sudo snap refresh core
 sudo snap install --classic certbot
 sudo ln -s /snap/bin/certbot /usr/bin/certbot
 
 # Request SSL/TLS certificate using Certbot
+echo "Requesting SSL/TLS certificate..."
 sudo certbot certonly --non-interactive --agree-tos --standalone -d "$hostname" --email "$email"
 
 # Stop and remove the old Docker image/container if it exists
+echo "Stopping and removing old Docker image/container..."
 sudo docker stop proxy
 sudo docker rm proxy
 sudo docker rmi proxy:latest
 
 # Build the Docker image
-sudo docker build --progress=plain -t proxy:latest .
+echo "Building Docker image..."
+sudo docker build -t proxy:latest .
 
 # Remove the proxy-startup service if it exists
+echo "Removing proxy-startup service..."
 sudo systemctl stop proxy-startup.service
 sudo systemctl disable proxy-startup.service
 sudo systemctl daemon-reload
@@ -57,6 +64,7 @@ sudo rm /run/systemd/system/proxy-startup.service.*
 sudo systemctl daemon-reload
 
 # Create the proxy-startup service which will start the docker container on boot
+echo "Creating proxy-startup service..."
 chmod +x proxy-startup-helper.sh
 sudo mv proxy-startup-helper.sh /usr/local/bin
 sudo mv proxy-startup.service /etc/systemd/system
