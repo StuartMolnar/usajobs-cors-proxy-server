@@ -4,8 +4,8 @@ Requires=docker.service
 After=docker.service
 
 [Service]
-Restart=no
-ExecStart=/usr/bin/docker start proxy
+Type=oneshot
+ExecStart=/bin/bash /usr/local/bin/proxy-startup-helper.sh
 
 [Install]
 WantedBy=multi-user.target

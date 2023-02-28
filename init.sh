@@ -63,6 +63,8 @@ sudo rm /run/systemd/system/proxy-startup.service.*
 sudo systemctl daemon-reload
 
 # Create the proxy-container service which will start the docker container on boot
+chmod +x proxy-startup-helper.sh
+sudo mv proxy-startup-helper.sh /usr/local/bin
 sudo mv proxy-startup.service /etc/systemd/system
 sudo systemctl daemon-reload
 sudo systemctl enable proxy-startup.service
