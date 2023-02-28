@@ -31,8 +31,11 @@ sudo apt-get update
 sudo apt-cache policy docker-ce
 sudo apt install docker-ce -y
 
+# Remove the old Docker image if it exists
+docker rmi proxy:latest
+
 # Build the Docker image with Hostname as an environment variable
-sudo docker build --no-cache --build-arg HOSTNAME=$hostname-t -t proxy:1.0 .
+sudo docker build --build-arg HOSTNAME=$hostname-t -t proxy:latest .
 
 # Install Certbot
 sudo snap install core
