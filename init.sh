@@ -31,12 +31,6 @@ sudo apt-get update
 sudo apt-cache policy docker-ce
 sudo apt install docker-ce -y
 
-# Remove the old Docker image if it exists
-sudo docker rmi proxy:latest
-
-# Build the Docker image with Hostname as an environment variable
-sudo docker build --build-arg HOSTNAME=$hostname-t -t proxy:latest .
-
 # Install Certbot
 sudo snap install core
 sudo snap refresh core
@@ -46,9 +40,13 @@ sudo ln -s /snap/bin/certbot /usr/bin/certbot
 # Request SSL/TLS certificate using Certbot
 sudo certbot certonly --non-interactive --agree-tos --standalone -d "$hostname" --email "$email"
 
-# Stop and remove the docker container if it exists
+# Stop and remove the old Docker image/container if it exists
 sudo docker stop proxy
 sudo docker rm proxy
+sudo docker rmi proxy:latest
+
+# Build the Docker image with Hostname as an environment variable
+sudo docker build --build-arg HOSTNAME=$hostname-t -t proxy:latest .
 
 # Start the docker container on port 8443, and pass in SSL/TLS certification
 sudo docker run -d --privileged --name proxy -p 8443:8443 -v /etc/letsencrypt:/etc/letsencrypt proxy:latest
