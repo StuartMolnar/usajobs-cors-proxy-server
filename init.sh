@@ -9,8 +9,8 @@ read -p "Enter the new hostname: " new_hostname
 read -p "Enter the new email: " new_email
 
 # Replace the values in the app_conf.yml file
-sed -i "s/hostname:\s*$hostname/hostname: $new_hostname/" app_conf.yml
-sed -i "s/email:\s*$email/email: $new_email/" app_conf.yml
+sed -i "s/^hostname: .*$/hostname: $new_hostname/" app_conf.yml
+sed -i "s/^email: .*$/email: $new_email/" app_conf.yml
 
 # Update the values for the hostname and email
 hostname=$(grep -oP 'hostname:\s*\K\S+' app_conf.yml)
