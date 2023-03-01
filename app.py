@@ -4,8 +4,12 @@ import ssl
 import yaml
 from flask import request
 import urllib.parse
+from flask_cors import CORS
 
 app = connexion.App(__name__, specification_dir='.')
+
+# Initialize CORS
+CORS(app.app)
 
 # Load variables from the configuration file
 with open('app_conf.yml', 'r') as f:

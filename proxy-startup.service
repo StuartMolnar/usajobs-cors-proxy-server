@@ -2,6 +2,7 @@
 Description=Docker container for USAJobs CORS proxy server
 Requires=docker.service
 After=docker.service
+TimeoutStartSec=30
 
 [Service]
 Type=oneshot
