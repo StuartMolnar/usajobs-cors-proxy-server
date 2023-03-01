@@ -2,6 +2,8 @@ import requests
 import connexion
 import ssl
 import yaml
+from flask import request
+import urllib.parse
 
 app = connexion.App(__name__, specification_dir='.')
 
@@ -18,7 +20,9 @@ def proxy(path):
     data = connexion.request.get_data()
 
     # Set the URL of the destination server
-    url = f'https://data.usajobs.gov/api/{path}'
+    base_url = 'https://data.usajobs.gov/api/'
+    query_params = request.args.to_dict()
+    url = base_url + path + '?' + urllib.parse.urlencode(query_params)
 
     # Set the headers for the request
     headers = {
