@@ -5,10 +5,11 @@ After=docker.service
 TimeoutStartSec=30
 
 [Service]
-Type=simple
+Type=oneshot
 ExecStart=/bin/bash /usr/local/bin/proxy-startup-helper.sh
 Restart=always
-RestartSec=10
+RestartSec=20
+RemainAfterExit=true
 
 [Install]
 WantedBy=multi-user.target
