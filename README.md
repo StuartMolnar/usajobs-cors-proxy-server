@@ -16,6 +16,10 @@ and
 # Make the setup script executable and run it
 ```chmod +x init.sh``` -> ```./init.sh```
 
+<br>
+
+Then follow the prompts for hostname and email entry (these are used for the SSL certification)
+
 # That's all
 The endpoint should be available at 
 ```<your hostname>:8443/proxy/historicjoa?```
