@@ -43,6 +43,7 @@ def proxy(path):
 
 if __name__ == '__main__':
     # Load the SSL certificate and key files
+    
     ssl_context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
     ssl_context.load_cert_chain(
         f'/etc/letsencrypt/live/{app_config["hostname"]}/fullchain.pem', 
