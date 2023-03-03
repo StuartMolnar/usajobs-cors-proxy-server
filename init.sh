@@ -54,31 +54,6 @@ sudo docker rmi proxy:latest
 echo "Building Docker image..."
 sudo docker build -t proxy:latest .
 
-# Remove the proxy-startup service if it exists
-echo "Removing proxy-startup service..."
-sudo systemctl stop proxy-startup.service
-sudo systemctl disable proxy-startup.service
-sudo systemctl daemon-reload
-sudo rm /etc/systemd/system/proxy-startup.service
-sudo rm /run/systemd/system/proxy-startup.service.*
-sudo systemctl daemon-reload
-
-# Create the proxy-startup service which will start the docker container on boot
-echo "Creating proxy-startup service..."
-chmod +x proxy-startup-helper.sh
-sudo mv proxy-startup-helper.sh /usr/local/bin
-sudo mv proxy-startup.service /etc/systemd/system
-sudo systemctl daemon-reload
-sudo systemctl enable proxy-startup.service
-sudo systemctl start proxy-startup.service
-
-# Create the api-monitor service which will monitor the API and restart the proxy if necessary
-echo "Creating api-monitor service..."
-chmod +x api-monitor.sh
-sudo mv api-monitor.sh /usr/local/bin
-sudo mv api-monitor.service /etc/systemd/system
-sudo mv api-monitor.timer /etc/systemd/system
-sudo systemctl daemon-reload
-sudo systemctl enable api-monitor.timer
-sudo systemctl enable api-monitor.service
-sudo systemctl start api-monitor.timer
+# Run the Docker container
+echo "Running Docker container..."
+sudo docker run -d --privileged --name proxy --restart always -p 8443:8443 -v /etc/letsencrypt:/etc/letsencrypt proxy:latest

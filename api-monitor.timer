@@ -1,9 +1,0 @@
-[Unit]
-Description=API Monitor Timer
-
-[Timer]
-OnCalendar=*:0/1
-Unit=api-monitor.service
-
-[Install]
-WantedBy=timers.target
