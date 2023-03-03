@@ -71,3 +71,14 @@ sudo mv proxy-startup.service /etc/systemd/system
 sudo systemctl daemon-reload
 sudo systemctl enable proxy-startup.service
 sudo systemctl start proxy-startup.service
+
+# Create the api-monitor service which will monitor the API and restart the proxy if necessary
+echo "Creating api-monitor service..."
+chmod +x api-monitor.sh
+sudo mv api-monitor.sh /usr/local/bin
+sudo mv api-monitor.service /etc/systemd/system
+sudo mv api-monitor.timer /etc/systemd/system
+sudo systemctl daemon-reload
+sudo systemctl enable api-monitor.timer
+sudo systemctl enable api-monitor.service
+sudo systemctl start api-monitor.timer
