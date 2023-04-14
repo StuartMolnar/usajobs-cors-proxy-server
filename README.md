@@ -1,4 +1,4 @@
-Front-end code at ```https://github.com/StuartMolnar/usajobs-app```
+Front-end code at https://github.com/StuartMolnar/usajobs-app
 
 # Create the environment
 
